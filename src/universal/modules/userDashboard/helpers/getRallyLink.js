@@ -3,18 +3,6 @@ import React from 'react';
 
 const rallyList = [
   {
-    phrase: 'Carpe Diem',
-    link: 'https://youtu.be/veYR3ZC9wMQ'
-  },
-  {
-    phrase: 'Keep Moving Forward',
-    link: 'https://youtu.be/5HksV7ZFuhM'
-  },
-  {
-    phrase: 'Discombobulate',
-    link: 'https://youtu.be/UxfauhR7niY'
-  },
-  {
     phrase: 'Be Happy',
     link: 'https://youtu.be/d-diB65scQU'
   },
@@ -23,16 +11,20 @@ const rallyList = [
     link: 'https://youtu.be/hTWKbfoikeg'
   },
   {
-    phrase: 'The Best Times',
-    link: 'https://youtu.be/2H5uWRjFsGc'
-  },
-  {
     phrase: 'Can’t Touch This',
     link: 'https://youtu.be/ck6i3HtktaY'
   },
   {
+    phrase: 'Carpe Diem',
+    link: 'https://youtu.be/veYR3ZC9wMQ'
+  },
+  {
     phrase: 'C’mere! Get Free',
     link: 'https://youtu.be/asOvnGHwtDU'
+  },
+  {
+    phrase: 'Discombobulate',
+    link: 'https://youtu.be/UxfauhR7niY'
   },
   {
     phrase: 'Don’t Stop Believin’',
@@ -55,8 +47,8 @@ const rallyList = [
     link: 'https://youtu.be/gAjR4_CbPpQ'
   },
   {
-    phrase: 'It’s A Lovely Day',
-    link: 'https://youtu.be/sYi7uEvEEmk'
+    phrase: 'Keep Moving Forward',
+    link: 'https://youtu.be/5HksV7ZFuhM'
   },
   {
     phrase: 'Kill It With Kisses',
@@ -101,6 +93,10 @@ const rallyList = [
   {
     phrase: 'Wax On',
     link: 'https://youtu.be/Wd7PvbJece8'
+  },
+  {
+    phrase: 'The Best Times',
+    link: 'https://youtu.be/2H5uWRjFsGc'
   },
   {
     phrase: 'The Whole Team Here',
