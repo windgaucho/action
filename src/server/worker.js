@@ -29,6 +29,7 @@ getDotenv();
 
 const PROD = process.env.NODE_ENV === 'production';
 const INTRANET_JWT_SECRET = process.env.INTRANET_JWT_SECRET || '';
+const MEMWATCH = process.env.MEMWATCH === 'true';
 // used for initial responses
 
 export function run(worker) { // eslint-disable-line import/prefer-default-export
@@ -112,5 +113,5 @@ export function run(worker) { // eslint-disable-line import/prefer-default-expor
   const connectionHandler = scConnectionHandler(exchange);
   scServer.on('connection', connectionHandler);
 
-  startMemwatch();
+  MEMWATCH && startMemwatch();
 }

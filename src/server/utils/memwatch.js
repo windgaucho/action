@@ -7,7 +7,8 @@ export const defaultOptions = {
   logLeaks: true,
   logGCStats: true,
   logHeapUsageEvery: 10,
-  logHeapDiffAfter: 60
+  logHeapDiffInitialAfter: 120,
+  logHeapDiffEndAfter: 60
 };
 
 const memwatchLog = (event, obj) => {
@@ -34,9 +35,19 @@ const start = (options = defaultOptions) => {
   if (options.logHeapUsageEvery > 0) {
     setInterval(logHeapUsage, options.logHeapUsageEvery * 1000);
   }
-  if (options.logHeapDiffAfter > 0) {
+  if (options.logHeapDiffInitialAfter > 0) {
     hd = new memwatch.HeapDiff();
-    setTimeout(() => logDiff(hd.end()), options.logHeapDiffAfter * 1000);
+    setTimeout(() => {
+      hd = new memwatch.HeapDiff();
+      console.log(`<memwatchHeapDiff
+  message="snapshot taken!"
+  endSec="${options.logHeapDiffEndAfter}"`);
+    }, options.logHeapDiffInitialAfter * 1000);
+  }
+  if (options.logHeapDiffEndAfter > 0) {
+    setTimeout(() => logDiff(hd.end()),
+      (options.logHeapDiffInitialAfter + options.logHeapDiffEndAfter) * 1000
+    );
   }
 };
 
