@@ -14,7 +14,7 @@ export const defaultOptions = {
 const memwatchLog = (event, obj) => {
   console.log(`<${event}>`);
   console.log(JSON.stringify(obj, null, 2));
-  console.log(`/<${event}>`)
+  console.log(`/<${event}>`);
 };
 
 const logLeak = (info) => memwatchLog('memwatchLeak', info);

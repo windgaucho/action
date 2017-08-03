@@ -113,5 +113,7 @@ export function run(worker) { // eslint-disable-line import/prefer-default-expor
   const connectionHandler = scConnectionHandler(exchange);
   scServer.on('connection', connectionHandler);
 
-  MEMWATCH && startMemwatch();
+  if (MEMWATCH) {
+    startMemwatch();
+  }
 }
