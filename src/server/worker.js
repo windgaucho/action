@@ -22,6 +22,8 @@ import handleIntegration from './integrations/handleIntegration';
 import sendICS from './sendICS';
 import './polyfills';
 import {GITHUB, SLACK} from 'universal/utils/constants';
+import startMemwatch from './utils/memwatch';
+
 // Import .env and expand variables:
 getDotenv();
 
@@ -109,4 +111,6 @@ export function run(worker) { // eslint-disable-line import/prefer-default-expor
   scServer.addMiddleware(MIDDLEWARE_SUBSCRIBE, mwMemoSubscribe);
   const connectionHandler = scConnectionHandler(exchange);
   scServer.on('connection', connectionHandler);
+
+  startMemwatch();
 }
