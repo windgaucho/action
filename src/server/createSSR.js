@@ -4,7 +4,7 @@ import {applyMiddleware, createStore} from 'redux';
 import thunkMiddleware from 'redux-thunk';
 //import makeSegmentSnippet from '@segment/snippet';
 //import getWebpackPublicPath from 'server/utils/getWebpackPublicPath';
-import makeReducer from 'universal/redux/makeReducer';
+//import makeReducer from 'universal/redux/makeReducer';
 import printStyles from 'universal/styles/theme/printStyles';
 //import Html from './Html';
 
@@ -30,8 +30,8 @@ const metaAndTitle = `
 
 let cachedPage;
 export default function createSSR(req, res) {
-  const finalCreateStore = applyMiddleware(thunkMiddleware)(createStore);
-  const store = finalCreateStore(makeReducer(), {});
+  //const finalCreateStore = applyMiddleware(thunkMiddleware)(createStore);
+  //const store = finalCreateStore(makeReducer(), {});
   if (process.env.NODE_ENV === 'production') {
     //if (!cachedPage) {
     //   // eslint-disable-next-line global-require
