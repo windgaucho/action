@@ -15,6 +15,7 @@
   "main": "index.js",
   "scripts": {
     "start": "NODE_ENV=production node --trace-warnings ./src/server/server.babel.js",
+    "start:memwatch": "MEMWATCH=true node --expose-gc --trace-warnings ./src/server/server.babel.js",
     "start:tunnel": "export $(grep ^ULTRAHOOK_API_KEY .env | tr -d '\"') && ultrahook -k $ULTRAHOOK_API_KEY dev 3000",
     "dev": "if [ ! -f \"dll/vendors.json\" ] ; then npm run build:dll ; fi ; NODE_ENV=development node --trace-warnings ./src/server/server.babel.js",
     "build": "rimraf build && npm run build:relay && concurrently \"npm run build:client\" \"npm run build:server\"",
@@ -144,6 +145,7 @@
     "graphql-redis-subscriptions": "^1.2.0",
     "graphql-relay": "^0.5.2",
     "graphql-subscriptions": "^0.4.4",
+    "heapdump": "^0.3.9",
     "immutable": "^3.8.1",
     "ioredis": "^2.5.0",
     "isomorphic-fetch": "2.2.1",

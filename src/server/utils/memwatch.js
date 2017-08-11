@@ -1,5 +1,8 @@
 import memwatch from 'memwatch-next';
 
+// eslint-disable-next-line global-require
+require('heapdump');
+
 const processStart = new Date();
 const msFromStart = () => new Date() - processStart;
 
@@ -48,6 +51,14 @@ const start = (options = defaultOptions) => {
     setTimeout(() => logDiff(hd.end()),
       (options.logHeapDiffInitialAfter + options.logHeapDiffEndAfter) * 1000
     );
+  }
+
+  // force garbage collection after initialization is finished
+  try {
+    global.gc();
+  } catch (e) {
+    console.log("You must run program with 'node --expose-gc index.js' or 'npm start'");
+    process.exit();
   }
 };
 
