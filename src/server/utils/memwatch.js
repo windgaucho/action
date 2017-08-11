@@ -1,7 +1,17 @@
 import memwatch from 'memwatch-next';
+import process from 'process';
 
 // eslint-disable-next-line global-require
 require('heapdump');
+
+/*
+ * NOTES:
+ *
+ * Send SIGPIPE to force a garbage collection.
+ * Send SIGUSR2 to create a heap dump.
+ *
+ * Ex: $ kill -USR2 <pid>
+ */
 
 const processStart = new Date();
 const msFromStart = () => new Date() - processStart;
@@ -13,6 +23,17 @@ export const defaultOptions = {
   logHeapDiffInitialAfter: 120,
   logHeapDiffEndAfter: 60
 };
+
+export const doGC = () => {
+  try {
+    global.gc();
+    console.log('<doGC>Manual GC performed.</doGC>');
+  } catch (e) {
+    console.warn("Warning: to GC, you must run program with 'node --expose-gc index.js'");
+  }
+};
+
+process.on('SIGPIPE', doGC);
 
 const memwatchLog = (event, obj) => {
   console.log(`<${event}>`);
@@ -54,12 +75,7 @@ const start = (options = defaultOptions) => {
   }
 
   // force garbage collection after initialization is finished
-  try {
-    global.gc();
-  } catch (e) {
-    console.log("You must run program with 'node --expose-gc index.js' or 'npm start'");
-    process.exit();
-  }
+  doGC();
 };
 
 export default start;
