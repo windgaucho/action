@@ -18,4 +18,4 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 require('babel-register'); // eslint-disable-line import/no-extraneous-dependencies
-require('./server');
+require('./worker');
